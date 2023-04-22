@@ -1,0 +1,13 @@
+.modal_content {
+  width: 200px;
+  height: 200px;
+  background: white;
+  transform: rotate(360deg);
+  transition: 0.4s;
+}
+
+.mod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
