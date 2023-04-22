@@ -1,6 +1,6 @@
 import "./App.css";
 import Raect from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MainPage from "./Pages/MainPage";
 import AboutPage from "./Pages/AboutPage";
 

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import ModalDel from "../Modal/ModalDel";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
+  const [active, setActive] = useState(false);
 
-  const request = async () => {
+  const getPosts = async () => {
     const { data } = await axios.get(
       "https://jsonplaceholder.typicode.com/posts"
     );
@@ -13,26 +15,35 @@ const Posts = () => {
   };
 
   const deleted = (id) => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-      method: "DELETE",
-    }).then(() => {
-      setPosts(posts.filter((post) => post.id !== id));
-    });
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .then(() => {
+        setPosts(posts.filter((post) => post.id !== id));
+        setActive(false);
+      });
   };
 
   useEffect(() => {
-    request();
+    getPosts();
   }, []);
   return (
     <div>
       <ul>
         {posts.map((i) => (
-          <li key={i.id}>
+          <li onDoubleClick={() => deleted(i.id)} key={i.id}>
+            {active && (
+              <ModalDel
+                id={i.id}
+                setActive={setActive}
+                active={active}
+                deleted={deleted}
+              />
+            )}
             <p>
               {i.id}: {i.title}
             </p>
             <Link to={`/about/${i.id}`}>more</Link>
-            <button onClick={() => deleted(i.id)}>del</button>
+            <button onClick={() => setActive(true)}>modalDelete</button>
           </li>
         ))}
       </ul>
