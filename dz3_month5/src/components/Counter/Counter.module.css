@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.minus {
+  border: none;
+  border-radius: 3px;
+  padding: 10px 32px;
+  cursor: pointer;
+  background-color: tomato;
+  color: #fff;
+}
+.plus {
+  border: none;
+  border-radius: 3px;
+  padding: 10px 32px;
+  cursor: pointer;
+  background-color: rgb(110, 239, 71);
+  color: #fff;
+}
