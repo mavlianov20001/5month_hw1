@@ -1,0 +1,9 @@
+.container {
+  width: 900px;
+  margin: 0 auto;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
